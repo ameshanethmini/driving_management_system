@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard</title>
+<link href="cssadmin/style.css" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="sidebar">
+<h2>Admin Panel</h2>
+<a onclick="showSection('students')">Students</a>
+<a onclick="showSection('instructors')">Instructors</a>
+<a onclick="showSection('vehicles')">Vehicles</a>
+<a onclick="showSection('schedules')">Schedules</a>
+<a onclick="showSection('payments')">Payments</a>
+</div>
+<div class="main-content">
+<div class="section active" id="students">
+<h2>Manage Students</h2>
+<form onsubmit="event.preventDefault(); addData(this)">
+  <form id="studentForm" onsubmit="saveStudent(event)">
+    <input id="studentName" placeholder="Full Name" required type="text" />
+    <input id="studentId" placeholder="Student ID" required type="text" />
+    <input id="studentEmail" placeholder="Email address" required type="email" />
+    <input id="studentPassword" placeholder="Password" required type="password" />
+    <input id="confirmPassword" placeholder="Confirm Password" required type="text" />
+    <button type="submit">Save Student</button>
+  </form>
+  
+</form>
+<table border="1" style="margin-top: 20px; width: 100%; border-collapse: collapse;">
+
+</table>
+<table class="data-table" id="students-table">
+<thead>
+<tr><th>full Name</th><th>Student ID</th><th>Email address</th><th>password</th><th>confirm password</th><th>Actions</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<div class="section" id="instructors">
+<h2>Manage Instructors</h2>
+<form onsubmit="event.preventDefault(); addData(this)">
+<input placeholder="Instructor Name" required="" type="text"/>
+<input placeholder="Instructor ID" required="" type="text"/>
+<button type="submit">Save Instructor</button>
+</form>
+<table border="1" style="margin-top: 20px; width: 100%; border-collapse: collapse;">
+
+</table>
+<table class="data-table" id="instructors-table">
+<thead>
+<tr><th>Instructor Name</th><th>Instructor ID</th><th>Actions</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<div class="section" id="vehicles">
+<h2>Manage Vehicles</h2>
+<form onsubmit="event.preventDefault(); addData(this)">
+<input placeholder="Vehicle Number" required="" type="text"/>
+<input placeholder="Model" required="" type="text"/>
+<select>
+<option value="car">Car</option>
+<option value="bike">Bike</option>
+</select>
+<button type="submit">Save Vehicle</button>
+</form>
+<table border="1" style="margin-top: 20px; width: 100%; border-collapse: collapse;">
+
+</table>
+<table class="data-table" id="vehicles-table">
+<thead>
+<tr><th>Vehicle Number</th><th>Model</th><th>Type</th><th>Actions</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<div class="section" id="schedules">
+<h2>Manage Schedules</h2>
+<form onsubmit="event.preventDefault(); addData(this)">
+<input placeholder="Class ID" required="" type="text"/>
+<input placeholder="Date &amp; Time" required="" type="datetime-local"/>
+<input placeholder="Instructor ID" required="" type="text"/>
+<button type="submit">Save Schedule</button>
+</form>
+<table border="1" style="margin-top: 20px; width: 100%; border-collapse: collapse;">
+
+</table>
+<table class="data-table" id="schedules-table">
+<thead>
+<tr><th>Class ID</th><th>Date &amp; Time</th><th>Instructor ID</th><th>Actions</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+<div class="section" id="payments">
+<h2>Manage Payments</h2>
+<form onsubmit="event.preventDefault(); addData(this)">
+<input placeholder="Student ID" required="" type="text"/>
+<input placeholder="Amount (LKR)" required="" type="number"/>
+<input placeholder="Payment Date" required="" type="date"/>
+<button type="submit">Save Payment</button>
+</form>
+<table class="data-table" id="payments-table">
+<thead>
+<tr><th>Student ID</th><th>Amount (LKR)</th><th>Payment Date</th><th>Actions</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+</div>
+<script>
+    function showSection(id) {
+      const sections = document.querySelectorAll(".section");
+      sections.forEach(section => section.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+  </script>
+<script>
+function showSection(id) {
+  const sections = document.querySelectorAll(".section");
+  sections.forEach(section => section.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function addData(form) {
+  const section = form.closest(".section");
+  const table = section.querySelector("table");
+  const newRow = table.insertRow(-1);
+
+  const inputs = form.querySelectorAll("input, select");
+  inputs.forEach(input => {
+    const cell = newRow.insertCell(-1);
+    cell.textContent = input.value;
+  });
+
+  form.reset();
+}
+</script>
+<style>
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+  }
+  .data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  .data-table th {
+    background-color: #f4b400;
+    color: white;
+  }
+  .action-btn {
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+  }
+  .edit-btn { background-color: #4CAF50; color: white; }
+  .delete-btn { background-color: #e74c3c; color: white; }
+</style>
+<script>
+function showSection(id) {
+  document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function addData(form) {
+  const section = form.closest(".section");
+  const inputs = form.querySelectorAll("input, select");
+  const table = section.querySelector("table tbody");
+  const row = table.insertRow();
+
+  inputs.forEach(input => {
+    const cell = row.insertCell();
+    cell.textContent = input.value;
+  });
+
+  // Action buttons
+  const actionCell = row.insertCell();
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.className = "action-btn edit-btn";
+  editBtn.onclick = () => editRow(row, inputs.length);
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.className = "action-btn delete-btn";
+  deleteBtn.onclick = () => row.remove();
+  actionCell.append(editBtn, deleteBtn);
+
+  form.reset();
+}
+
+function editRow(row, fieldCount) {
+  for (let i = 0; i < fieldCount; i++) {
+    const currentValue = row.cells[i].textContent;
+    const input = document.createElement("input");
+    input.value = currentValue;
+    row.cells[i].textContent = '';
+    row.cells[i].appendChild(input);
+  }
+
+  const actions = row.cells[fieldCount];
+  actions.innerHTML = '';
+  const saveBtn = document.createElement("button");
+  saveBtn.textContent = "Save";
+  saveBtn.className = "action-btn edit-btn";
+  saveBtn.onclick = () => saveRow(row, fieldCount);
+  actions.appendChild(saveBtn);
+}
+
+function saveRow(row, fieldCount) {
+  for (let i = 0; i < fieldCount; i++) {
+    const input = row.cells[i].querySelector("input");
+    row.cells[i].textContent = input.value;
+  }
+
+  const actions = row.cells[fieldCount];
+  actions.innerHTML = '';
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.className = "action-btn edit-btn";
+  editBtn.onclick = () => editRow(row, fieldCount);
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.className = "action-btn delete-btn";
+  deleteBtn.onclick = () => row.remove();
+  actions.append(editBtn, deleteBtn);
+}
+
+function saveStudent(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("studentName").value;
+      const id = document.getElementById("studentId").value;
+      const email = document.getElementById("studentEmail").value;
+      const password = document.getElementById("studentPassword").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      fetch("http://localhost:8080/students", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, id, email, password })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert("Student saved successfully!");
+        document.getElementById("studentForm").reset();
+      })
+      .catch(err => console.error("Save failed:", err));
+    }
+</script>
+</body>
+</html>
