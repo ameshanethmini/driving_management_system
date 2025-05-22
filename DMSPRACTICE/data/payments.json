@@ -1,0 +1,9 @@
+[ {
+  "studentId" : "123",
+  "amount" : 5000.0,
+  "paymentDate" : "2025-05-24"
+}, {
+  "studentId" : "aamm",
+  "amount" : 1500.0,
+  "paymentDate" : "2025-05-22"
+} ]

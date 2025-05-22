@@ -1,0 +1,21 @@
+[ {
+  "name" : null,
+  "studentId" : "001",
+  "email" : "infoL@emediasolution.lk",
+  "password" : "333"
+}, {
+  "name" : "dinuja d",
+  "studentId" : "1747644708005",
+  "email" : "info@emediasolution.lk",
+  "password" : "jjj"
+}, {
+  "name" : "dinuja d herath",
+  "studentId" : "1747644735942",
+  "email" : "info@emediasolution.lk",
+  "password" : "555"
+}, {
+  "name" : null,
+  "studentId" : null,
+  "email" : "aaa@gmail.com",
+  "password" : "1234"
+} ]

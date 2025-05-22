@@ -1,0 +1,11 @@
+[ {
+  "vehicleId" : "1747944958547",
+  "vehicleNumber" : "8989",
+  "model" : "NEW",
+  "vehicleType" : "Car"
+}, {
+  "vehicleId" : "1747947349710",
+  "vehicleNumber" : "aa123",
+  "model" : "toyoya",
+  "vehicleType" : "Bike"
+} ]
