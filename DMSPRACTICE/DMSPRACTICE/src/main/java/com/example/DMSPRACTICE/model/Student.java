@@ -1,9 +1,19 @@
 package com.example.DMSPRACTICE.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Student {
+
+    @JsonProperty("fullName")
     private String name;
+
+    @JsonProperty("studentId")
     private String studentId;
+
+    @JsonProperty("email")
     private String email;
+
+    @JsonProperty("password")
     private String password;
 
     public Student() {}

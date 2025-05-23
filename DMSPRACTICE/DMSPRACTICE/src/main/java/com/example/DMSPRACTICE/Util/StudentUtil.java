@@ -26,6 +26,9 @@ public class StudentUtil {
             return new ArrayList<>();
         }
     }
+    public static String generateStudentId() {
+        return "S" + System.currentTimeMillis();
+    }
 
     public static void writeStudents(List<Student> students) {
         try {

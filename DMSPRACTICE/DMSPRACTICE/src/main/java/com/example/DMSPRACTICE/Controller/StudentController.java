@@ -19,6 +19,11 @@ public class StudentController {
     //add student
     @PostMapping
     public String addStudent(@RequestBody Student student) {
+
+        if (student.getStudentId() == null || student.getStudentId().isEmpty()) {
+            student.setStudentId(StudentUtil.generateStudentId());
+        }
+
         StudentUtil.addStudent(student);
         return "Student added successfully!";
     }
