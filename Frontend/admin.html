@@ -1,195 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Admin Dashboard</title>
-    <link href="cssadmin/style.css" rel="stylesheet" />
-    <style>
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background: white;
-        }
-        
-        .data-table th,
-        .data-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-        
-        .data-table th {
-            background-color: #f4b400;
-            color: white;
-        }
-        
-        .action-btn {
-            padding: 5px 10px;
-            margin: 0 5px;
-            font-size: 0.9em;
-            cursor: pointer;
-        }
-        
-        .edit-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
-        
-        .delete-btn {
-            background-color: #e74c3c;
-            color: white;
-        }
-        
-        .section {
-            display: none;
-        }
-        
-        .section.active {
-            display: block;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Admin Dashboard</title>
+  <link href="cssadmin/style.css" rel="stylesheet" />
+  <style>
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: white;
+    }
+    .data-table th, .data-table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    .data-table th {
+      background-color: #f4b400;
+      color: white;
+    }
+    .action-btn {
+      padding: 5px 10px;
+      margin: 0 5px;
+      font-size: 0.9em;
+      cursor: pointer;
+    }
+    .edit-btn { background-color: #4CAF50; color: white; }
+    .delete-btn { background-color: #e74c3c; color: white; }
+    .section { display: none; }
+    .section.active { display: block; }
+  </style>
 </head>
-
 <body>
-    <div class="sidebar">
-        <h2>Admin Panel</h2>
-        <a onclick="showSection('students')">Students</a>
-        <a onclick="showSection('instructors')">Instructors</a>
-        <a onclick="showSection('vehicles')">Vehicles</a>
-        <a onclick="showSection('schedules')">Schedules</a>
-        <a onclick="showSection('payments')">Payments</a>
-    </div>
+<div class="sidebar">
+  <h2>Admin Panel</h2>
+  <a onclick="showSection('students')">Students</a>
+  <a onclick="showSection('instructors')">Instructors</a>
+  <a onclick="showSection('vehicles')">Vehicles</a>
+  <a onclick="showSection('schedules')">Schedules</a>
+  <a onclick="showSection('payments')">Payments</a>
+</div>
 
-    <div class="main-content">
-        <div class="section active" id="students">
-            <h2>Manage Students</h2>
-            <form id="studentForm" onsubmit="saveStudent(event)">
-                <input id="studentName" placeholder="Full Name" required type="text" />
-                <input id="studentId" placeholder="Student ID" required type="text" />
-                <input id="studentEmail" placeholder="Email address" required type="email" />
-                <input id="studentPassword" placeholder="Password" required type="password" />
-                <input id="confirmPassword" placeholder="Confirm Password" required type="password" />
-                <button type="submit">Save Student</button>
-            </form>
-            <table class="data-table" id="students-table">
-                <thead>
-                    <tr>
-                        <th>Full Name</th>
-                        <th>Student ID</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+<div class="main-content">
+  <div class="section active" id="students">
+    <h2>Manage Students</h2>
+    <form id="studentForm" onsubmit="saveStudent(event)">
+      <input id="studentName" placeholder="Full Name" required type="text" />
+      <input id="studentId" placeholder="Student ID" required type="text" />
+      <input id="studentEmail" placeholder="Email address" required type="email" />
+      <input id="studentPassword" placeholder="Password" required type="password" />
+      <input id="confirmPassword" placeholder="Confirm Password" required type="password" />
+      <button type="submit">Save Student</button>
+    </form>
+    <table class="data-table" id="students-table">
+      <thead>
+        <tr><th>Full Name</th><th>Student ID</th><th>Email</th><th>Password</th><th>Actions</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 
-        <div class="section" id="instructors">
-            <h2>Manage Instructors</h2>
-            <form id="instructorForm" onsubmit="saveInstructor(event)">
-                <input id="InstructorName" name="instructorName" placeholder="Instructor Name" required type="text" />
-                <input id="InstructorID" name="instructorId" placeholder="Instructor ID" required type="text" />
-                <button type="submit">Save Instructor</button>
-            </form>
-            <table class="data-table" id="instructors-table">
-                <thead>
-                    <tr>
-                        <th>Instructor Name</th>
-                        <th>Instructor ID</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+  <div class="section" id="instructors">
+    <h2>Manage Instructors</h2>
+    <form id="instructorForm" onsubmit="saveInstructor(event)">
+  <input id="InstructorName" name="instructorName" placeholder="Instructor Name" required type="text" />
+  <input id="InstructorID" name="instructorId" placeholder="Instructor ID" required type="text" />
+  <input id="InstructorExp" name="instructorExp" placeholder="Experience (Years)" required type="number" min="0" />
+  <button type="submit">Save Instructor</button>
+</form>
 
-        <div class="section" id="vehicles">
-            <h2>Manage Vehicles</h2>
-            <form id="vehicleForm" onsubmit="saveVehicle(event)">
-                <input id="vehicleNumber" placeholder="Vehicle Number" required type="text" />
-                <input id="model" placeholder="Model" required type="text" />
-                <select id="type" required>
+    <table class="data-table" id="instructors-table">
+      <thead>
+  <tr><th>Name</th><th>ID</th><th>Experience</th><th>Actions</th></tr>
+</thead>
+
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="section" id="vehicles">
+    <h2>Manage Vehicles</h2>
+    <form id="vehicleForm" onsubmit="saveVehicle(event)">
+      <input id="vehicleNumber" placeholder="Vehicle Number" required type="text" />
+      <input id="model" placeholder="Model" required type="text" />
+      <select id="type" required>
         <option value="">Select Type</option>
         <option value="Car">Car</option>
         <option value="Bike">Bike</option>
       </select>
-                <button type="submit">Save Vehicle</button>
-            </form>
-            <table class="data-table" id="vehicles-table">
-                <thead>
-                    <tr>
-                        <th>Vehicle Number</th>
-                        <th>Model</th>
-                        <th>Type</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+      <button type="submit">Save Vehicle</button>
+    </form>
+    <table class="data-table" id="vehicles-table">
+      <thead>
+        <tr><th>Vehicle Number</th><th>Model</th><th>Type</th><th>Actions</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 
-        <div class="section" id="schedules">
-            <h2>Manage Schedules</h2>
-            <form id="lessonRequestForm" onsubmit="saveLessonRequest(event)">
-                <input id="lessonStudentId" placeholder="Student ID" required />
-                <input id="lessonStudentName" placeholder="Student Name" required />
-                <input id="lessonPhone" placeholder="Phone Number" required />
-                <input id="lessonEmail" placeholder="Email Address" required />
-                <select id="lessonCourse" required>
+  <div class="section" id="schedules">
+    <h2>Manage Schedules</h2>
+    <form id="lessonRequestForm" onsubmit="saveLessonRequest(event)">
+      <input id="lessonStudentId" placeholder="Student ID" required />
+      <input id="lessonStudentName" placeholder="Student Name" required />
+      <input id="lessonPhone" placeholder="Phone Number" required />
+      <input id="lessonEmail" placeholder="Email Address" required />
+      <select id="lessonCourse" required>
         <option value="">Select Course</option>
         <option value="Beginner">Beginner</option>
         <option value="Refresher">Refresher</option>
         <option value="Advanced">Advanced</option>
       </select>
-                <input id="lessonDateTime" type="datetime-local" required />
-                <button type="submit">Save Lesson Request</button>
-            </form>
-            <table class="data-table" id="lesson-queue-table">
-                <thead>
-                    <tr>
-                        <th>Student ID</th>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Email</th>
-                        <th>Course</th>
-                        <th>Date & Time</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+      <input id="lessonDateTime" type="datetime-local" required />
+      <button type="submit">Save Lesson Request</button>
+    </form>
+    <table class="data-table" id="lesson-queue-table">
+      <thead>
+        <tr><th>Student ID</th><th>Name</th><th>Phone</th><th>Email</th><th>Course</th><th>Date & Time</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  
+<div class="section" id="payments">
+  <h2>Manage Payments</h2>
+  <form onsubmit="savePayment(event)">
+    <input placeholder="Student ID" required type="text" />
+    <input placeholder="Amount (LKR)" required type="number" />
+    <input placeholder="Payment Date" required type="date" />
+    <button type="submit">Save Payment</button>
+  </form>
+  <table class="data-table" id="payments-table">
+    <thead>
+      <tr><th>Student ID</th><th>Amount (LKR)</th><th>Payment Date</th><th>Actions</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 
-        <div class="section" id="payments">
-            <h2>Manage Payments</h2>
-            <form onsubmit="savePayment(event)">
-                <input placeholder="Student ID" required type="text" />
-                <input placeholder="Amount (LKR)" required type="number" />
-                <input placeholder="Payment Date" required type="date" />
-                <button type="submit">Save Payment</button>
-            </form>
-            <table class="data-table" id="payments-table">
-                <thead>
-                    <tr>
-                        <th>Student ID</th>
-                        <th>Amount (LKR)</th>
-                        <th>Payment Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-
-    </div>
+</div>
 
 
 
-    <script src="/Frontend/js/app.js"></script>
-    <script src="/Frontend/js/admin-dashbord.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/admin-dashbord.js"></script>
 </body>
-
 </html>

@@ -1,172 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register & Login - DRIVON</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register & Login - DRIVON</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
-
 <body style="margin: 0; padding: 0; background-color: #fff;">
 
-    <!-- Custom Cursor -->
-    <div class="custom-cursor"></div>
+  <!-- Custom Cursor -->
+  <div class="custom-cursor"></div>
 
-    <!-- Header -->
-    <div id="header-container"></div>
+  <!-- Header -->
+  <div id="header-container"></div>
 
-    <!-- Top Banner -->
-    <section class="text-center text-white" style="background: url('../images/hero-bg.png') center/cover no-repeat; padding: 80px 0;">
-        <h2 class="fw-bold text-uppercase">User <span class="text-warning">Access</span></h2>
-        <p class="text-light">Home / Register & Login</p>
-    </section>
+  <!-- Top Banner -->
+  <section class="text-center text-white" style="background: url('../images/hero-bg.png') center/cover no-repeat; padding: 80px 0;">
+    <h2 class="fw-bold text-uppercase">User <span class="text-warning">Access</span></h2>
+    <p class="text-light">Home / Register & Login</p>
+  </section>
 
-    <!-- Register & Login Section -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row justify-content-center">
+  <!-- Register & Login Section -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        
+        <!-- Sign Up -->
+        <div class="col-md-5 mb-4">
+          <div class="border rounded-3 p-4 shadow">
+            <h4 class="fw-bold mb-3 text-warning">Sign Up</h4>
+            <form onsubmit="registerUser(event)" id="registerForm">
+              <div class="mb-3">
+                <input id="registerName" type="text" class="form-control" placeholder="Full Name" required>
+              </div>
+              <div class="mb-3">
+                <input id="registerEmail" type="email" class="form-control" placeholder="Email Address" required>
+              </div>
+              <div class="mb-3">
+                <input id="registerPassword" type="password" class="form-control" placeholder="Password" required>
+              </div>
+              <div class="mb-3">
+                <input id="registerConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" required>
+              </div>
+              <button type="submit" class="btn btn-warning w-100 fw-semibold">Create Account</button>
+            </form>
+          </div>
+        </div>
 
-                <!-- Sign Up -->
-                <div class="col-md-5 mb-4">
-                    <div class="border rounded-3 p-4 shadow">
-                        <h4 class="fw-bold mb-3 text-warning">Sign Up</h4>
-                        <form onsubmit="registerUser(event)" id="registerForm">
-                            <div class="mb-3">
-                                <input id="registerName" type="text" class="form-control" placeholder="Full Name" required>
-                            </div>
-                            <div class="mb-3">
-                                <input id="registerEmail" type="email" class="form-control" placeholder="Email Address" required>
-                            </div>
-                            <div class="mb-3">
-                                <input id="registerPassword" type="password" class="form-control" placeholder="Password" required>
-                            </div>
-                            <div class="mb-3">
-                                <input id="registerConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" required>
-                            </div>
-                            <button type="submit" class="btn btn-warning w-100 fw-semibold">Create Account</button>
-                        </form>
-                    </div>
-                </div>
-
-
-                <div class="col-md-5">
-                    <div class="border rounded-3 p-4 shadow login-box">
-                        <h4 class="fw-bold mb-3 text-warning">Log In</h4>
-                        <form onsubmit="loginUser(event)">
-                            <div class="mb-3">
-                                <input id="loginEmail" type="email" class="form-control" placeholder="Email Address" required />
-                            </div>
-                            <div class="mb-3">
-                                <input id="loginPassword" type="password" class="form-control" placeholder="Password" required />
-                            </div>
-                            <div class="d-flex justify-content-between mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="rememberMe" />
-                                    <label class="form-check-label" for="rememberMe">Remember Me</label>
-                                </div>
-                                <a href="#" class="text-decoration-none text-warning small">Forgot Password?</a>
-                            </div>
-                            <button type="submit" class="btn btn-warning w-100 fw-semibold">Login</button>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
+      
+  <div class="col-md-5">
+  <div class="border rounded-3 p-4 shadow login-box">
+    <h4 class="fw-bold mb-3 text-warning">Log In</h4>
+    <form onsubmit="loginUser(event)">
+      <div class="mb-3">
+        <input id="loginEmail" type="email" class="form-control" placeholder="Email Address" required />
+      </div>
+      <div class="mb-3">
+        <input id="loginPassword" type="password" class="form-control" placeholder="Password" required />
+      </div>
+      <div class="d-flex justify-content-between mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="rememberMe" />
+          <label class="form-check-label" for="rememberMe">Remember Me</label>
+        </div>
+        <a href="#" class="text-decoration-none text-warning small">Forgot Password?</a>
+      </div>
+      <button type="submit" class="btn btn-warning w-100 fw-semibold">Login</button>
+    </form>
+  </div>
+</div>
 
         </div>
-        </div>
-    </section>
+
+      </div>
+    </div>
+  </section>
 
 
-    <div id="footer"></div>
+  <div id="footer"></div>
 
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    fetch("../js/components/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-container").innerHTML = data;
+      });
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        fetch("../js/components/header.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("header-container").innerHTML = data;
-            });
+    fetch("../js/components/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
 
-        fetch("../js/components/footer.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("footer").innerHTML = data;
-            });
+    // Cursor animation
+    const cursor = document.querySelector('.custom-cursor');
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+    });
 
-        // Cursor animation
-        const cursor = document.querySelector('.custom-cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.top = e.clientY + 'px';
-            cursor.style.left = e.clientX + 'px';
+   
+    function registerUser(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("registerName").value.trim();
+      const email = document.getElementById("registerEmail").value.trim();
+      const password = document.getElementById("registerPassword").value;
+      const confirmPassword = document.getElementById("registerConfirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("❌ Passwords do not match!");
+        return;
+      }
+
+      const student = {
+        fullName: name,
+        email: email,
+        password: password
+       
+      };
+
+      fetch("http://localhost:8080/students", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(student)
+      })
+        .then(res => res.text())
+        .then(data => {
+          alert("✅ Account created successfully!");
+          document.getElementById("registerForm").reset();
+        })
+        .catch(err => {
+          alert("❌ Something went wrong: " + err);
         });
+    }
+    
+function loginUser(event) {
+  event.preventDefault();
+
+  const email = document.getElementById("loginEmail").value.trim();
+  const password = document.getElementById("loginPassword").value;
+
+  fetch("http://localhost:8080/students")
+    .then(res => res.json())
+    .then(students => {
+      const match = students.find(s => s.email === email && s.password === password);
+      if (match) {
+        alert("✅ Login successful!");
+        window.location.href = "index.html";
+      } else {
+        alert("❌ Invalid email or password");
+      }
+    })
+    .catch(err => {
+      console.error("Login Error:", err);
+      alert("❌ Server error");
+    });
+}
 
 
-        function registerUser(event) {
-            event.preventDefault();
-
-            const name = document.getElementById("registerName").value.trim();
-            const email = document.getElementById("registerEmail").value.trim();
-            const password = document.getElementById("registerPassword").value;
-            const confirmPassword = document.getElementById("registerConfirmPassword").value;
-
-            if (password !== confirmPassword) {
-                alert("❌ Passwords do not match!");
-                return;
-            }
-
-            const student = {
-                fullName: name,
-                email: email,
-                password: password
-
-            };
-
-            fetch("http://localhost:8080/students", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(student)
-                })
-                .then(res => res.text())
-                .then(data => {
-                    alert("✅ Account created successfully!");
-                    document.getElementById("registerForm").reset();
-                })
-                .catch(err => {
-                    alert("❌ Something went wrong: " + err);
-                });
-        }
-
-        function loginUser(event) {
-            event.preventDefault();
-
-            const email = document.getElementById("loginEmail").value.trim();
-            const password = document.getElementById("loginPassword").value;
-
-            fetch("http://localhost:8080/students")
-                .then(res => res.json())
-                .then(students => {
-                    const match = students.find(s => s.email === email && s.password === password);
-                    if (match) {
-                        alert("✅ Login successful!");
-                        //window.location.href = "";
-                    } else {
-                        alert("❌ Invalid email or password");
-                    }
-                })
-                .catch(err => {
-                    console.error("Login Error:", err);
-                    alert("❌ Server error");
-                });
-        }
-    </script>
+  </script>
 </body>
-
 </html>
