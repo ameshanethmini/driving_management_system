@@ -152,7 +152,7 @@ function loginUser(event) {
       const match = students.find(s => s.email === email && s.password === password);
       if (match) {
         alert("✅ Login successful!");
-        window.location.href = "index.html";
+        
       } else {
         alert("❌ Invalid email or password");
       }
